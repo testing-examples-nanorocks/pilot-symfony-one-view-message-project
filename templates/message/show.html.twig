@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}OneViewMessage - Send your message{% endblock %}
+{% block body %}
+    <div>
+        {% if message is defined and message == null %}
+            <h3>Message is destroyed</h3>
+        {% else %}
+        <h1>Message view:</h1>
+        <pre>
+            {% if message is defined %}
+                {{ message }}
+            {% endif %}
+        </pre>
+        {% endif %}
+    </div>
+{% endblock %}

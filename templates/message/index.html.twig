@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}OneViewMessage - Send your message{% endblock %}
+{% block body %}
+    <div style="width: 33%;">
+        <h1 style="display: block; width: 100%; margin: 10px;">Send message</h1>
+        <form action="{{ path('store_message') }}" method="post">
+            <input type="hidden" name="token" value="{{ csrf_token('_token') }}"/>
+            <div>
+                <input style="display: block; width: 100%; margin: 10px;" type="email" name="email" id="email">
+            </div>
+            <div>
+                <textarea style="display: block; width: 100%; margin: 10px;" name="message" id="message" cols="30" rows="10"></textarea>
+            </div>
+            <button style="width: 100%; margin: 10px;" type="submit" name="submit-msg" id="submit-msg">Submit</button>
+        </form>
+
+        <div>
+            {% if errors is defined %}
+            <ul>
+                {% for error in errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
